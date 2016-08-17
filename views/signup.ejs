@@ -1,0 +1,55 @@
+<!-- views/signup.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="javascript.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="col-sm-6 col-sm-offset-3">
+
+    <h1 style="text"><span class="fa fa-sign-in"></span> Signup</h1>
+
+    <!-- show any messages that come back with authentication -->
+    <% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div>
+    <% } %>
+
+    <!-- LOGIN FORM -->
+    <form action="/signup" method="post" >
+
+        <div class="form-group">
+            <label id="p0">Name</label>
+            <input id="name" onblur="checkName()" placeholder="e.g: Taha Siddiqui" type="text" class="form-control" name="name">
+        </div>
+        <div class="form-group">
+            <label id="p1">DSUID</label>
+            <input id="dsuid" onblur="checkID()" placeholder="e.g: CS123456" type="text" class="form-control" name="DSUID">
+        </div>
+        <div class="form-group">
+            <label id="p2">Email</label>
+            <input id="mail" onblur="checkEmail()" placeholder="e.g: username@domain.com" type="email" class="form-control" name="email">
+        </div>
+        <div class="form-group">
+            <label id="p3">Password</label>
+            <input id="password1" onblur="checkPassword1()" placeholder="Password" type="password" class="form-control" name="password">
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+    </form>
+
+    <hr>
+
+    <p>Already have an account? <a href="/login">Login</a></p>
+    <p>Or go <a href="/">home</a>.</p>
+
+</div>
+
+</div>
+</body>
+</html>
