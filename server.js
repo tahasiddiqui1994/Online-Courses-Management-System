@@ -4,13 +4,13 @@
 // get all the tools we need
 var express  = require('express') ;
 var app      = express() ;
-var mongoose = require('mongoose') ;
+//var mongoose = require('mongoose') ;
 var passport = require('passport') ;
 var flash    = require('connect-flash') ;
 var path     = require('path');
-var jwt      = require('jsonwebtoken');
-var port     = process.env.PORT || 3000 ;
-
+var mysql    = require ("mysql")
+var port     = process.env.PORT || 61000 ;
+var jwt          = require('jsonwebtoken');
 var apiRoutes	   = express.Router()	;
 var morgan       = require('morgan') ;
 var cookieParser = require('cookie-parser') ;
@@ -24,14 +24,15 @@ var configSecret     = require('./config/SuperSecret.js') ;
 var LocalStrategy    = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 // load up the user model
-var User             = require('./app/models/user');
+//var User             = require('./app/models/user');
 var configAuth       = require('./config/auth');
 
 // configuration ===============================================================
-mongoose.connect(configDB.url) ; // connect to our database
+//mongoose.connect(configDB.url) ; // connect to our database
 
-require('./config/passport')(passport, LocalStrategy, FacebookStrategy, User, configAuth, jwt, app) ; // pass passport for configuration
-
+//require('./config/passport')(passport, LocalStrategy, FacebookStrategy, User, configAuth, jwt, app) ; // pass passport for configuration
+//require('./config/passport')(passport, LocalStrategy, FacebookStrategy, configAuth, jwt, app) ; // pass passport for configuration
+require('./config/passport')(passport) ; // pass passport for configuration
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
@@ -47,6 +48,7 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 app.use(express.static(__dirname + '/views'));
+app.set('SuperSecret', configSecret.secret) ;
 
 routes.use(function(req, res, next) {
 
@@ -57,12 +59,12 @@ routes.use(function(req, res, next) {
   if (token) {
 
     // verifies secret and checks exp
-    jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
+    jwt.verify(token, app.get('superSecret'), function(err, decoded) {
       if (err) {
-        return res.json({ success: false, message: 'Failed to authenticate token.' });    
+        return res.json({ success: false, message: 'Failed to authenticate token.' });
       } else {
         // if everything is good, save to request for use in other routes
-        req.decoded = decoded;    
+        req.decoded = decoded;
         next();
       }
     });
@@ -71,16 +73,18 @@ routes.use(function(req, res, next) {
 
     // if there is no token
     // return an error
-    return res.status(403).send({ 
-        success: false, 
-        message: 'No token provided.' 
+    return res.status(403).send({
+        success: false,
+        message: 'No token provided.'
     });
-    
+
   }
 });
 
 // routes ======================================================================
-require('./app/routes.js')(routes, app, passport, path, User); // load our routes and pass in our app and fully configured passport
+//equire('./app/routes.js')(routes, app, passport, path, User); // load our routes and pass in our app and fully configured passport
+//require('./app/routes.js')(routes, app, passport, path); // load our routes and pass in our app and fully configured passport
+require('./app/routes.js')(app, passport, jwt); // load our routes and pass in our app and fully configured passport
 
 // launch ======================================================================
 app.listen(port);

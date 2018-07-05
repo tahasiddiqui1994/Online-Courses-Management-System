@@ -1,47 +1,207 @@
-<!-- views/signup.ejs -->
-<!doctype html>
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Node Authentication</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
-    <style>
-        body        { padding-top:80px; }
-    </style>
+    <link rel="shortcut icon" href="images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="144x144" type="image/x-icon" href="images/favicon/apple-touch-icon.png">
+<link rel="stylesheet" type="text/css" href="css/plugin.css">
+   <link rel="stylesheet" type="text/css" href="css/style1.css">
+    <!-- Google Web Fonts  -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700">
+<title>Database Systems Project</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Dazzling Multi Forms Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" property="" />
+<!-- js -->
+<script src="js/jquery-2.2.3.min.js"></script> 
+<!-- //js -->
+
+    <script type="text/javascript" src="javascript.js"></script>
 </head>
-<body>
-<div class="container">
+<body>    
+    
+    
+    <!-- Preloader Start -->
+    <div id="preloader">
+      <div class="loader"></div>
+    </div>
+    <!-- Preloader End -->
 
-<div class="col-sm-6 col-sm-offset-3">
+    
+    
+    <!-- Home & Menu Section Start -->
+    <header id="home" class="home-section">
+        
+        <div class="header-top-area">
+            <div class="container">
+                <div class="row">
+                
+                    <div class="col-sm-3">
+                        <div class="logo">
+                            <a href="/" style="font-size: 25px">CRS</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-9">
+                        <div class="navigation-menu">
+                            <div class="navbar">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div class="navbar-collapse collapse">
+                                    <ul class="nav navbar-nav navbar-right">
+                                    <li class="active"><a class="smoth-scroll" href="/">Home <div class="ripple-wrapper"></div></a>
+                                        </li>
+                                <li><a class="smoth-scroll" href="/login">Login</a>
+                                    </li>
+                                    <li><a class="smoth-scroll" href="/signup">Signup</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br>
+    <div class="main">
 
-    <h1><span class="fa fa-sign-in"></span> Signup</h1>
-
+        <div class="w3_agile_main_grids">
+            <section class="slider">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <div class="agileits_w3layouts_main_grid">
     <!-- show any messages that come back with authentication -->
     <% if (message.length > 0) { %>
         <div class="alert alert-danger"><%= message %></div>
     <% } %>
+                                <h3 class="alert alert-success" class="hTag" style="color: black ;"><b> <strong>Signup</strong></b></h3>
+                                <form action="/signup" method="post">
+                                    <span>
+                                        <label class="lebelBorder" style="border-bottom-left-radius: 5px;border-top-left-radius: 5px ; font-size: 12px" id="p01;"><strong>First Name</strong></label>
+                                        <input class="inputBorder" onblur="checkFName()" id="firstname" name="firstname" type="text" placeholder="First Name" required="">
+                                    </span>
+                                    <span>
+                                        <label class="lebelBorder" id="p02"><strong>Last Name</strong></label>
+                                        <input class="inputBorder" onblur="checkLName()" id="lastname" name="lastname" type="text" placeholder="Last Name" required="">
+                                    </span>
+                                    <span>
+                                        <label class="lebelBorder" id="p1"><strong>DSU ID</strong></label>
+                                        <input class="inputBorder" onblur="checkID()" id="DSUID" name="username" type="text" placeholder="cs123456" required="">
+                                    </span>
+                                    <span>
+                                        <label class="lebelBorder" id="p2"><strong>Email</strong></label>
+                                        <input class="inputBorder" onblur="checkEmail()" id="mail" name="email" type="email" value="." placeholder="taha_siddiqui1994@yahooo.com" required="">
+                                    </span>
+                                    <span>
+                                        <label class="lebelBorder" id="p3"><strong>Password</strong></label>
+                                        <input class="inputBorder" onblur="checkPassword1()" id="password1" name="password" value="." type="Password" id="password1" placeholder="Your Password" required="">
+                                    </span>
+                                    <span>
+                                        <label class="lebelBorder" id="p4"><strong>CNIC</strong></label>
+                                        <input class="inputBorder" onblur="checkCNIC()" id="cnic" name="cnic" type="text" placeholder="CNIC" required="">
+                                    </span>
+                                    <span>
+                                        <label class="lebelBorder" id="p5" style=" font-size: 10px;padding-bottom: 17px"><strong>Cell Number</strong></label>
+                                        <input class="inputBorder" onblur="checkCellNo()" id="mobile" name="mobile" type="text" placeholder="Mobile Number" required="">
+                                    </span>
+                                    <span>
+                                        <label class="lebelBorder" id="p6"><strong>Age</strong></label>
+                                        <input class="inputBorder" onblur="checkAge()" id="age" name="age" type="text" placeholder="Age" required="">
+                                    </span>
+                                    <span>
+                                        <label class="lebelBorder">Address</strong></label>
+                                        <input class="inputBorder" name="address" type="text" placeholder="Your Address" required="">
+                                    </span>
+                                    <span>
+                                        <label class="lebelBorder" style=" font-size: 10px;padding-bottom: 17px"><strong>AdmissionDate</strong></label>
+                                        <input class="inputBorder" id="dateofadmission" name="dateofadmission" type="text" placeholder="Date Of Admission" required="">
+                                    </span>
+                                    <span>
+                                        <label id="p7" class="lebelBorder"><strong>Semester </strong></label>
+                                        <input onblur="checkSemester()" class="inputBorder" id="semester" name="semester" type="text" placeholder="Semester No." required="">
+                                    </span>
+                                    <span>
+                                        <label id="p8" class="lebelBorder"><strong>gender</strong></label>
+                                        <input onblur="checkGender()" class="inputBorder" id="gender" name="gender" type="text" placeholder="Gender M/F" required="">
+                                    </span>
 
-    <!-- LOGIN FORM -->
-    <form action="/signup" method="post">
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control" name="email">
+                                    <div class="w3_agileits_submit">
+                                        <input class="buttonBorder" type="submit" value="Signup">
+                                        <input class="buttonBorder" type="reset" value="reset">
+                                    </div>
+                                </form>
+                                <hr>
+                                <p class="redirectlines">Already have an account? <a class="alink" href="/login">Login</a></p>
+                                <p class="redirectlines">Or go <a class="alink" href="/">home</a>.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
         </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" name="password">
-        </div>
-
-        <button type="submit" class="btn btn-warning btn-lg">Signup</button>
-    </form>
-
-    <hr>
-
-    <p>Already have an account? <a href="/login">Login</a></p>
-    <p>Or go <a href="/">home</a>.</p>
-
-</div>
-
-</div>
+    </div>
+<!-- password -->
+    <script type="text/javascript">
+        window.onload = function () {
+            document.getElementById("password1").onchange = validatePassword;
+            document.getElementById("password2").onchange = validatePassword;
+        }
+        function validatePassword(){
+            var pass2=document.getElementById("password2").value;
+            var pass1=document.getElementById("password1").value;
+            if(pass1!=pass2)
+                document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+            else
+                document.getElementById("password2").setCustomValidity('');  
+                //empty string means no validation error
+        }
+    </script>
+<!-- password -->
+<!-- flexSlider -->
+    <script defer src="js/jquery.flexslider.js"></script>
+    <script type="text/javascript">
+        $(window).load(function(){
+          $('.flexslider').flexslider({
+            animation: "slide",
+            slideshow: false,
+            start: function(slider){
+              $('body').removeClass('loading');
+            }
+          });
+        });
+    </script>
+<!-- //flexSlider -->
+    <!-- Back to Top Start -->
+    <a href="#" class="scroll-to-top"><i class="fa fa-angle-up"></i></a>
+    <!-- Back to Top End -->
+    
+    
+    <!-- All Javascript Plugins  -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/plugin.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyC0HAKwKinpoFKNGUwRBgkrKhF-sIqFUNA"></script>
+    
+    <!-- Main Javascript File  -->
+    <script type="text/javascript" src="js/scripts.js"></script>
 </body>
 </html>

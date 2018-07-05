@@ -11,3 +11,35 @@ body{
     color: black;
 }
 
+.lebelBorder{
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	font-style: bold;
+}
+.hTag{
+	background: #DCDCDC; 
+	color: black; 
+	font-family: verdena; 
+	font-style: bold; 
+	padding-bottom: 8px; 
+	padding-top: 8px; 
+	border-radius: 5px;
+}
+.inputBorder{
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+	font-style: italic;
+	color: white;
+	text-decoration-color: black;
+}
+.buttonBorder{
+	border-radius: 5px;
+}
+.redirectlines{
+	font-style: bold ;
+	color: white;
+}
+.alink{
+	color: orange;
+	font-style: bold;
+}
